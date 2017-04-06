@@ -17,6 +17,17 @@ namespace DevNetPbt
     [TestFixture]
     public class MathLibTests
     {
+        [Test]
+        public void RevListTest()
+        {
+            ForAll(RandomChoiceOf.NonEmptyListsOfInts,
+                    xs =>
+                        CollectionAssert.AreEqual(xs, RevList(RevList(xs)),
+                            $"For any list, `l`, `l == reverse(reverse(l))`.\n `l`= {string.Join(",", xs)}")
+                )
+                .Label("reverse of referse should provide the original list")
+                .QuickCheckThrowOnFailure();
+        }
         
         [PropertyTest(Description = "for every n > 0 where n is Natural SUM(1,2...n)=n*(n+1)/2")]
         public Property ForAllNatural() =>

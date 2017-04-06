@@ -1,10 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DevNetPbt
 {
     public class MathLib
     {
+        public static IList<T> RevList<T>(IList<T> origList)
+        {
+            var res = new List<T>(origList.Count);
+           
+            for (int i = origList.Count - 1; i > 0; i--)
+            {
+                res.Add(origList[i]);
+            }
+            return res;
+        }
+
+        
         /// <summary>
         /// Sum of the first n natural numbers.
         /// </summary>
